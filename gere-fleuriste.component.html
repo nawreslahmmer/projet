@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-image: url('inter.jpg'); 
+            background-size: cover; 
+            background-repeat: no-repeat; 
+            background-attachment: fixed; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; 
+            margin: 0; 
+            padding: 0; 
+            font-family: Arial, sans-serif; /* Ajout d'une police de caractères générique */
+            color:#022f02 /* Couleur du texte */
+        }
+        
+        h1 {
+            text-align: center; 
+            color: #fff; /* Couleur du titre */
+        }
+        
+        p {
+            text-align: center; 
+            color: #fff; /* Couleur du texte */
+        }
+        
+        button {
+            background-color: #022f02; 
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+        
+        button:hover {
+            background-color: #014e01; /* Changement de couleur au survol */
+        }
+
+        table {
+            margin-top: 20px; 
+            background-color: rgba(255, 255, 255, 0.8); /* Utilisation d'une couleur de fond semi-transparente */
+            border-collapse: collapse; 
+            width: 80%; /* Largeur de la table */
+            margin: auto; /* Centrage horizontal de la table */
+        }
+        
+        th {
+            background-color: #022f02; 
+            color: white; 
+            padding: 10px; /* Ajout de marge intérieure aux cellules d'en-tête */
+        }
+        
+        td {
+            padding: 10px; /* Ajout de marge intérieure aux cellules de données */
+        }
+        h1{
+            color:#022f02;
+        }
+        p{
+            color:black;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>HELLO admin</h1>
+        <p>tu as l'accès pour ajouter, modifier, supprimer</p>
+        <button  onclick="navigateTo('ajout_fleuriste')">Ajouter Fleuriste</button>
+
+
+        <table border="1">
+            <tr>
+                <th>IMAGE</th>
+                <th> données fleuriste </th>
+                <th>modifier/supprimer</th>
+            </tr>
+            <tr *ngFor="let f of fleurists">
+                <td></td>
+                <td>
+                    id:{{f.id_fleriste}}<br>
+                    nom:{{f.nom}}<br>
+                    mail:{{f.mail}}<br>
+                    num_tel:{{f.num_tel}}<br>
+                    avis:{{f.avis}}<br>
+                    lieu:{{f.localisation}}<br>
+                    prix:{{f.prix}}<br>
+                    service:{{f.service}}<br>
+                </td>
+                <td>
+                    <button (click)="supprimeFleurist(f.id_fleriste)">supprimer</button><br>
+                    <button clas="btn btn-danger" (click)="updateFleuriste()">modifier</button><br>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        function navigateTo(route) {
+            if (route === 'ajout_fleuriste') {
+                window.location.href = "../ajout_fleuriste/ajout-fleuriste.component.html";
+            }
+        }
+    </script>
+    
+</body>
+</html>
